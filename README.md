@@ -42,3 +42,21 @@ password is generated. This password is then encrypted using asymmetric
 encryption for each device a user with access has. When requesting the
 secrets, only the encrypted version is going over the wire and is decrypted on
 the device using the private key of the asymmetric encryption algorithm.
+
+Secrets live within one or more collections. These collections are assigned to
+an organization. Access to the collections is granted via teams within the
+organization. Each individual user can be in multiple organizations as well as
+multiple teams.
+
+```mermaid
+erDiagram
+    User }|--|{ Organization : member
+    User ||--o{ Organization : owns
+    User }|--|{ Team : member
+    User ||--o{ Device : has
+    Organization ||--o{ Team : has
+    Collection }o--|| Organization : has
+    Team }|--|{ Collection : access
+    Collection }|--o{ Secret : has
+    Device }|--o{ Collection : access
+```
