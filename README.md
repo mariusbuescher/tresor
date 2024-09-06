@@ -33,6 +33,8 @@ The software should
 - provide an API for extension.
 - keep a local (encrypted) copy of the data
 - provide events (email, webhooks etc.) for secrets, that expire
+- provide an audit log
+- be able to leverage SSO like OIDC, SAML or LDAP
 
 ## Architecture
 
