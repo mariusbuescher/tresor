@@ -32,6 +32,7 @@ The software should
   decrypt everything.
 - provide an API for extension.
 - keep a local (encrypted) copy of the data
+- provide events (email, webhooks etc.) for secrets, that expire
 
 ## Architecture
 
