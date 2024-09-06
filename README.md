@@ -31,6 +31,7 @@ The software should
 - keep some fields in cleartext, so you can search without having to
   decrypt everything.
 - provide an API for extension.
+- keep a local (encrypted) copy of the data
 
 ## Architecture
 
