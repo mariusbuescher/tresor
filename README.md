@@ -61,6 +61,19 @@ erDiagram
     Key }|--o{ Collection : access
 ```
 
+### Client
+
+The client should keep a local copy of all secrets and should only read from
+that local copy. Changes, however should only be made on the server. This
+ensures, that the password manager can also be used offline. A change however
+might be stored in a queue and then be applied when the client comes online the
+next time. Syncronization might happen in a background job.
+
+To provide a seemless experience, there should be a library, that should be used
+in **all** clients. It is best to provide something, that can be used across
+different programming languages, environments, operating systems and CPU
+architectures.
+
 ## Security
 
 Logging into the API should be possible with SSO and simple username and
