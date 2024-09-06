@@ -51,13 +51,11 @@ multiple teams.
 
 ```mermaid
 erDiagram
-    User }|--|{ Organization : member
-    User ||--o{ Organization : owns
     User }|--|{ Team : member
-    User ||--o{ Device : has
-    Organization ||--o{ Team : has
+    User ||--o{ Key : has
     Collection }o--|| Organization : has
     Team }|--|{ Collection : access
+    Team ||--o{ Collection : owns
     Collection }|--o{ Secret : has
-    Device }|--o{ Collection : access
+    Key }|--o{ Collection : access
 ```
