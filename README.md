@@ -26,7 +26,7 @@ The software should
 
 - be free and Open Source.
 - be able to share secrets between individual people and teams.
-- provide strong encryption. Only the devices, that will use/read the
+- provide strong encryption. Only the clients, that will use/read the
   secrets should be able to decrypt the secret.
 - keep some fields in cleartext, so you can search without having to
   decrypt everything.
@@ -36,19 +36,22 @@ The software should
 
 ## Architecture
 
-As some of the requirements say, only the devices reading the secrets should
+As some of the requirements say, only the clients reading the secrets should
 be able to decrypt them. To achieve this, the secrets should be encrypted using
 a symmetric encryption algorithm, such as AES-256 or ChaCha20. The secrets
-should organized in collections and for each collection, a encryption
+should be organized in collections and for each collection, an encryption
 password is generated. This password is then encrypted using asymmetric
-encryption for each device a user with access has. When requesting the
+encryption for each client a user with access has. When requesting the
 secrets, only the encrypted version is going over the wire and is decrypted on
-the device using the private key of the asymmetric encryption algorithm.
+the device using the private key of the asymmetric encryption algorithm. Anyhow,
+only an encrypted version of the secrets is stored on the server, so having
+someone without permission accessing the data should have no impact at all.
 
-Secrets live within one or more collections. These collections are assigned to
-an organization. Access to the collections is granted via teams within the
-organization. Each individual user can be in multiple organizations as well as
-multiple teams.
+Secrets live within one or more collections. Access to the collections is
+granted via teams. Each individual user can be in teams.
+
+Each client is defined by a keypair, where only the public key is stored on the
+server.
 
 ```mermaid
 erDiagram
