@@ -50,7 +50,7 @@ only an encrypted version of the secrets is stored on the server, so having
 someone without permission accessing the data should have no impact at all.
 
 Secrets live within one or more collections. Access to the collections is
-granted via teams. Each individual user can be in teams.
+granted via teams. Each individual user can be in multiple teams.
 
 Each client is defined by a keypair, where only the public key is stored on the
 server.
