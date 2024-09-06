@@ -60,3 +60,24 @@ erDiagram
     Collection }|--o{ Secret : has
     Key }|--o{ Collection : access
 ```
+
+## Security
+
+Logging into the API should be possible with SSO and simple username and
+password as well as MFA. Albeit, this login only will get you into a
+"management" mode on the server. You will be able to see what items there are
+and also see the cleartext values of them, but the encrypted secrets will not be
+exposed in this mode. To get access to these secrets, you have to request
+another token for a specific key, which will be send to your client encrypted
+with the stored public key. Only your client should be able to decrypt this
+token, as you are (hopefully) the only person in posession of this key.
+
+The secrets however are stored on the server in an encrypted way, so you will
+not be able to read them just by getting hold of the token. You will also need
+the private key to decrypt them.
+
+In management mode, you will be able to add a key, but this key will not be
+active right away. A rouge actor might got hold of some of your credentials and
+try to add his own key to your keyring to gain access to the secrets. A newly
+added key **must** be validated by signing it with an existing key. The only
+key, that does not need validation is the first key, that is added to the user.
